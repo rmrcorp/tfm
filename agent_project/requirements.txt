@@ -1,0 +1,9 @@
+langchain-ollama
+langgraph
+langchain-core
+langchain-community
+langchain-qdrant
+mcp
+qdrant-client
+pydantic
+pymongo

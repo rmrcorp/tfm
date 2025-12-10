@@ -1,0 +1,24 @@
+version: "3.9"
+
+services:
+  mongo:
+    image: mongo:latest
+    container_name: mcp_mongo_db
+    restart: always
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_persistence:/data/db
+    environment:
+      MONGO_INITDB_DATABASE: gestion_clientes
+  qdrant:
+    image: qdrant/qdrant:v1.16.1
+    container_name: qdrant
+    ports:
+      - "6333:6333"
+    volumes:
+      - qdrant_data:/qdrant/storage
+
+volumes:
+  qdrant_data:
+  mongo_persistence:

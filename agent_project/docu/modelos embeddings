@@ -1,0 +1,8 @@
+Qué notarás?
+La distancia matemática entre "Alta de Usuario" y "Baja de Usuario" aumentará drásticamente.
+
+Nomic: Similitud Alta vs Baja ~90% (Se confunde).
+
+BGE-M3: Similitud Alta vs Baja ~60% (Los distingue perfectamente).
+
+Esto, sumado al Router Semántico y al Top-K=3 que implementamos antes, hará que tu agente sea prácticamente infalible.
