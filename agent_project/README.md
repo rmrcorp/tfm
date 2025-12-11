@@ -34,7 +34,6 @@ El uso de MCPs nos permite meidante un lenguaje común comunicar con sistemas es
 2. Hibridez en la Ejecución (Local vs. Remoto)
 El agente experto tiene la capacidad de leer herramientas de ejecución local (Stdio) y herramientas http (SSE).
 
-
 ---
 
 ## 📂 Estructura del Proyecto
@@ -117,7 +116,7 @@ Instalar las dependencias
 pip install -r requirements.txt
 ```
 
-### 2. Infraestructura Base (Qdrant & MongoDB)
+### 3. Infraestructura Base (Qdrant & MongoDB)
 El proyecto incluye un archivo `docker-compose.yml` que orquesta la base de datos vectorial y la documental.
 
 ```bash
@@ -125,4 +124,8 @@ El proyecto incluye un archivo `docker-compose.yml` que orquesta la base de dato
 docker-compose up -d
 ```
 
-
+### 4. Lanzar Agente
+```bash
+# En la src del proyecto
+python3 main.py
+```
