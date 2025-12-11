@@ -36,7 +36,7 @@ El agente experto tiene la capacidad de leer herramientas de ejecución local (S
 
 ---
 
-## 📂 Estructura del Proyecto
+## Estructura del Proyecto
 
 ```text
 agent_project/
@@ -81,7 +81,7 @@ agent_project/
 └── requirements.txt          # Dependencias
 ```
 
-## 🛠️ Requisitos Previos
+## Requisitos Previos
 
 * **Python:** Versión **3.11** (Estricto, necesario para `asyncio.TaskGroup` y no superior).
 * **Java:** JDK 17 o superior (Para el servidor MCP CRM que está en el proyecto de java spring).
@@ -92,7 +92,7 @@ agent_project/
 
 ---
 
-## 🚀 Guía de Instalación y Puesta en Marcha
+## Guía de Instalación y Puesta en Marcha
 
 Sigue estos pasos en **estricto orden secuencial** para evitar errores de conexión.
 
