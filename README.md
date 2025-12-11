@@ -1,17 +1,17 @@
-Orquestación de Agente Experto Híbrido con Protocolo MCP y RAG Avanzado
+# Orquestación de Agente Experto Híbrido con Protocolo MCP y RAG Avanzado
 Trabajo de Fin de Máster (TFM) - Máster Universitario en Inteligencia Artificial (UNIR).
 
-# Resumen del Proyecto
+## Resumen del Proyecto
 Este repositorio contiene la implementación completa de un sistema de Agentes Autónomos diseñado para ejecutar procesos de negocio complejos y secuenciales a partir de documentos existentes en entornos empresariales exportados a extensión ".md".
 El proyecto resuelve la problemática de la integración de sistemas heterogéneos y la adherencia estricta a procedimientos empresariales mediante una Arquitectura Híbrida. Utiliza el estándar Model Context Protocol (MCP) para coordinar un orquestador en Python apoyándose en técnicas de RAG Avanzado para la recuperación de conocimiento procedimental.
 
-# Arquitectura Híbrida
+## Arquitectura Híbrida
 El núcleo de este TFM reside en su concepción híbrida, la cual está detallada en el README del proyecto agente (agent_project).
 
-# Estructura del Sistema
+## Estructura del Sistema
 La solución se divide en 3 niveles lógicos implementados en dos proyectos contenidos en este repositorio:
 
-Diagrama de Niveles
+## Diagrama de Niveles
 Nivel Cognitivo (Python): Planificación estricta, Routing semántico y contexto en memoria.
 
 Nivel de Memoria (RAG): Parent Document Retriever sobre Qdrant (Vectorial) y almacenamiento local.
@@ -35,7 +35,7 @@ root/
 └── docker-compose.yml    # Infraestructura transversal (BBDD)
 ```
 
-# Guía de Inicio Rápido (Global)
+## Guía de Inicio Rápido (Global)
 Para levantar el ecosistema completo, es necesario seguir un orden estricto debido a las dependencias de conexión persistente (SSE) del mcp del CRM.
 
 1. Requisitos Previos Globales
