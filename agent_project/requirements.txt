@@ -7,3 +7,5 @@ mcp
 qdrant-client
 pydantic
 pymongo
+pandas
+psutil

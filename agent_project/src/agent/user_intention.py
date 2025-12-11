@@ -2,7 +2,6 @@ from langchain_core.prompts import ChatPromptTemplate
 from src.agent.agent_state import AgentState, UserIntent
 from src.agent.model import llm_user_intention
 
-
 def get_user_intent(state: AgentState) -> UserIntent:
     messages = state["messages"]
     last_user_msg = messages[-1].content
@@ -44,35 +43,3 @@ def get_user_intent(state: AgentState) -> UserIntent:
     except Exception:
         print(f"!!! Error analizando la intención del usuario, por defecto se ejecuta una \"query_process\"")
         return UserIntent(category="query_process", reasoning="Error en LLM, fallback por defecto.")
-
-
-
-# PROMPT ANTERIOR
-    """
-
-    system_prompt = Eres un experto analista de intenciones en un sistema de chat de Procesos de Negocio.
-        Tu único trabajo es clasificar el último mensaje del usuario en una de estas 4 categorías:
-
-        1. 'provide_data': El usuario está proporcionando un dato corto (DNI, Nombre, Email, Motivo, Confirmación) 
-           que probablemente le ha pedido el Asistente en el mensaje anterior.
-           Ejemplos: "Ruben", "12345678H", "baja voluntaria", "sí", "no".
-
-        2. 'ask_capabilities': El usuario pregunta qué puede hacer el bot o qué procesos existen.
-           Ejemplos: "¿Qué haces?", "Menú", "Lista de procesos", "Ayuda".
-
-        3. 'query_process': El usuario quiere iniciar o consultar información sobre un proceso de negocio específico.
-           Ejemplos: "Quiero dar de alta", "Cómo doy de baja", "Requisitos para alta".
-
-        4. 'general_chat': Saludos, despedidas o frases fuera de contexto de negocio.
-           Ejemplos: "Hola", "Buenos días", "Gracias".
-           
-        5. ANTI-BUCLE: Antes de llamar a una herramienta, mira el historial. ¿Acabas de llamarla con los mismos datos? Si es sí, DETENTE.
-        6. FORMATO: NO escribas JSON en el chat. Ejecuta la herramienta de forma oculta (Native Tool Call).
-        7. FINALIZACIÓN: Si la herramienta devuelve "Éxito", TU TRABAJO HA TERMINADO. No vuelvas a llamar a la herramienta. Informa al usuario y calla.
-
-        ANALIZA EL CONTEXTO:
-        - Último mensaje del Asistente: "{last_ai_msg}"
-        - Último mensaje del Usuario: "{user_input}"
-        
-    
-    """

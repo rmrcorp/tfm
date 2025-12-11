@@ -5,6 +5,19 @@ El proyecto está construido y gestionado mediante **Gradle**, asegurando una ge
 
 ---
 
+## Estrucutra del proyecto
+
+```text
+src/main/java/com/tfm/mcpcrm/
+├── config/
+│   └── MCPConfig.java       # Registra los beans de las Tools (ToolCallbackProvider)
+├── services/
+│   └── CRMTools.java        # Lógica de negocio anotada con @Tool
+├── McpCrmApplication.java   # Punto de entrada Spring Boot
+└── resources/
+└── application.properties # Configuración del puerto y MCP
+```
+
 ## Características
 
 * **Protocolo MCP:** Implementación estándar para conectar IA con sistemas externos.

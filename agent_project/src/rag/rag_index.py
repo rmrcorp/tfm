@@ -62,14 +62,13 @@ def _override_metadata(raw_docs: list[Document]):
 
 
 def _clean_current_data():
-    if qdrant_client.collection_exists(COLLECTION_NAME):
-        qdrant_client.delete(
-            collection_name=COLLECTION_NAME,
-            points_selector=models.FilterSelector(
-                filter=models.Filter(must=[])
-            )
+    qdrant_client.delete(
+        collection_name=COLLECTION_NAME,
+        points_selector=models.FilterSelector(
+            filter=models.Filter(must=[])
         )
-        print("Colección limpiada.")
+    )
+    print("Colección limpiada.")
     if os.path.exists(DOC_STORE_PATH):
         shutil.rmtree(DOC_STORE_PATH)
         print("Cache local de documentos limpiada.")

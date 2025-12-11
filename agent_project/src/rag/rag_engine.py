@@ -54,12 +54,11 @@ def get_master_index() -> str:
 
 def detect_document_target(query: str) -> str:
     master_index = get_master_index()
-
     prompt = ChatPromptTemplate.from_template(
         """ERES EL GESTOR DE UNA BIBLIOTECA DE PROCEDIMIENTOS.
 
         TU CATÁLOGO ACTUAL (Recuperado de Base de Datos):
-        {indice}
+        {master_index}
 
         SOLICITUD DEL USUARIO: "{query}"
 
@@ -68,7 +67,8 @@ def detect_document_target(query: str) -> str:
 
         REGLAS:
         1. Responde ÚNICAMENTE con el nombre exacto del archivo (ej: 'alta_cliente.md').
-        2. Si la solicitud es ambigua, genérica o no encaja claro, responde "TODOS".
+        2. Si la solicitud es ambigua, responde "TODOS".
+        3. Si la solicitud no tiene nada que ver con un proceso del catálogo de arriba, responde "NINGUNO"
         3. No expliques nada. Solo el nombre del archivo.
 
         NOMBRE DEL ARCHIVO:"""
@@ -79,13 +79,12 @@ def detect_document_target(query: str) -> str:
     try:
         # 3. Invocamos al LLM con el índice real
         file_name = chain.invoke({
-            "indice": master_index,
+            "master_index": master_index,
             "query": query
         }).strip()
 
         # Limpieza básica por si el LLM devuelve comillas o espacios extra
         file_name = file_name.replace("'", "").replace('"', "")
-
         print(f"Documento Objetivo: '{file_name}'")
         return file_name
 
