@@ -25,17 +25,17 @@ def get_user_intent(state: AgentState) -> UserIntent:
 
     CATEGORÍAS:
     1. 'provide_data': Usuario da un dato corto (DNI, Nombre, 'sí', 'no') respondiendo al Asistente.
-    2. 'ask_capabilities': Pregunta qué puede hacer el bot (Menú, Ayuda).
-    3. 'query_process': Quiere iniciar o consultar un proceso (Alta, Baja, Requisitos).
+    2. 'ask_capabilities': Pregunta qué puede hacer el asistente (Menú, Ayuda).
+    3. 'query_process': Quiere iniciar o consultar un proceso (Alta, Baja, Requisitos), NO se refiere a consultas sobre el proceso actual.
     4. 'general_chat': Saludos, gracias, fuera de contexto.
-    5. 'context_chat': Usuario restá preguntando sobre acciones o conversaciones pasadas, que ha hecho hace poco.
+    5. 'context_chat': Usuario PREGUNTA o da una ORDEN sobre acciones o conversaciones pasadas, que ha hecho hace poco.
 
     HISTORIA DE MENSAJES DEL ASISTENTE:
     {history_ai_messages}
 
     CONTEXTO:
     - contexto global: {global_context}
-    - Asistente dijo (ultimo mensaje): "{last_ai_msg}"
+    - Asistente dijo: "{last_ai_msg}"
     - Usuario dijo: "{user_input}"
     """
 
