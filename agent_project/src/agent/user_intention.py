@@ -5,12 +5,20 @@ from src.agent.model import llm_user_intention
 def get_user_intent(state: AgentState) -> UserIntent:
     messages = state["messages"]
     last_user_msg = messages[-1].content
-
+    global_context = state["context"]
     # Obtener contexto inmediato (mensaje anterior de la IA)
     last_ai_msg = "Ninguno (Inicio de conversación)"
     ai_msgs = [m for m in messages if m.type == "ai"]
     if ai_msgs:
         last_ai_msg = ai_msgs[-1].content
+
+    history_ai_messages = ""
+    if history_ai_messages:
+        for msg in messages[:-1][-6:]:
+            if msg.type == "ai":
+                history_ai_messages += f"{msg.content}\n"
+    else:
+        history_ai_messages = "No hay historial previo."
 
     system_prompt = """Eres un Router de Clasificación de Intenciones.
     Analiza la conversación y clasifica el último mensaje del usuario.
@@ -22,8 +30,12 @@ def get_user_intent(state: AgentState) -> UserIntent:
     4. 'general_chat': Saludos, gracias, fuera de contexto.
     5. 'context_chat': Usuario restá preguntando sobre acciones o conversaciones pasadas, que ha hecho hace poco.
 
+    HISTORIA DE MENSAJES DEL ASISTENTE:
+    {history_ai_messages}
+
     CONTEXTO:
-    - Asistente dijo: "{last_ai_msg}"
+    - contexto global: {global_context}
+    - Asistente dijo (ultimo mensaje): "{last_ai_msg}"
     - Usuario dijo: "{user_input}"
     """
 
@@ -34,6 +46,8 @@ def get_user_intent(state: AgentState) -> UserIntent:
 
     try:
         decision = router_chain.invoke({
+            "history_ai_messages": history_ai_messages,
+            "global_context": global_context,
             "last_ai_msg": last_ai_msg,
             "user_input": last_user_msg
         })
