@@ -1,0 +1,54 @@
+[
+  {
+    "id": "TC01_PROVIDE_DATA",
+    "description": "El usuario responde con datos a una pregunta del agente experto",
+    "expected_category": "provide_data",
+    "cases": [
+      { "user_input": "12345678Z", "last_ai_msg": "Por favor, indícame el DNI del cliente." },
+      { "user_input": "Nombre Inventado", "last_ai_msg": "¿Cuál es el nombre completo?" },
+      { "user_input": "Sí, confirmo", "last_ai_msg": "¿Deseas proceder con el alta?" },
+      { "user_input": "no", "last_ai_msg": "¿Es correcta esta información?" }
+    ]
+  },
+  {
+    "id": "TC02_QUERY_PROCESS",
+    "description": "El usuario quiere iniciar algo nuevo",
+    "expected_category": "query_process",
+    "cases": [
+      { "user_input": "Quiero dar de alta un cliente", "last_ai_msg": "Hola, soy tu asistente." },
+      { "user_input": "Necesito tramitar una baja", "last_ai_msg": "Proceso de alta finalizado." },
+      { "user_input": "Cómo solicito vacaciones", "last_ai_msg": "¿En qué más puedo ayudarte?" }
+    ]
+  },
+  {
+    "id": "TC03_CAPABILITIES",
+    "description": "Preguntas sobre el sistema",
+    "expected_category": "ask_capabilities",
+    "cases": [
+      { "user_input": "¿Qué sabes hacer?", "last_ai_msg": "Hola." },
+      { "user_input": "Muéstrame el menú", "last_ai_msg": "Dato guardado." },
+      { "user_input": "Ayuda", "last_ai_msg": "Hola." }
+    ]
+  },
+  {
+    "id": "TC04_GENERAL",
+    "description": "Charla trivial",
+    "expected_category": "general_chat",
+    "cases": [
+      { "user_input": "Hola buenos días", "last_ai_msg": "" },
+      { "user_input": "Gracias, hasta luego", "last_ai_msg": "Alta realizada con éxito." },
+      { "user_input": "Genial", "last_ai_msg": "Aquí tienes la información." }
+    ]
+  },
+  {
+    "id": "TC05_CONTEXT",
+    "description": "Referencias al historial o correcciones",
+    "expected_category": "context_chat",
+    "cases": [
+      { "user_input": "Espera, me he equivocado en el nombre", "last_ai_msg": "Entendido, guardo el nombre como Juan." },
+      { "user_input": "¿Qué me has preguntado antes?", "last_ai_msg": "Dime tu fecha de nacimiento." },
+      { "user_input": "Cambia el DNI a 12341234H, ese no es", "last_ai_msg": "DNI 12345678Z registrado." },
+      { "user_input": "Repíteme eso último", "last_ai_msg": "El proceso ha fallado por falta de datos." }
+    ]
+  }
+]
