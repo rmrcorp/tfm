@@ -5,7 +5,7 @@ from src.agent.model import llm_user_intention
 def get_user_intent(state: AgentState) -> UserIntent:
     messages = state["messages"]
     last_user_msg = messages[-1].content
-    global_context = state["context"]
+    global_context = state.get("context", "")
     # Obtener contexto inmediato (mensaje anterior de la IA)
     last_ai_msg = "Ninguno (Inicio de conversación)"
     ai_msgs = [m for m in messages if m.type == "ai"]
