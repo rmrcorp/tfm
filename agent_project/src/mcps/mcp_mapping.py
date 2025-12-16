@@ -47,8 +47,8 @@ def mapping_mcp_http_tools(session: ClientSession) -> list[StructuredTool]:
         return await session.call_tool(tool_name, arguments=kwargs)
 
     # IMPORTANTE: El 'name' debe coincidir con el nombre del @Bean en Java
-    # Si en Java pusiste @Bean public Function... crear_usuario_crm
-    # Aquí debe ser "crear_usuario_crm".
+    # Si en Java pusiste @Bean public Function... sincronizarUsuarioCRM
+    # Aquí debe ser "sincronizarUsuarioCRM".
     return [
         StructuredTool.from_function(
             coroutine=lambda **kwargs: call_mcp_http_tools("sincronizarUsuarioCRM", **kwargs),
