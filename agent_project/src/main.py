@@ -1,26 +1,19 @@
 import asyncio
 import sys
-import os
 from contextlib import AsyncExitStack
 from typing import Any
 
-from mcp import ClientSession, StdioServerParameters
+from mcp import ClientSession
 from mcp.client.sse import sse_client
 from mcp.client.stdio import stdio_client
 
 from src.agent.agent import build_agent
+from src.mcps.config import server_params, JAVA_SSE_URL
 from src.mcps.mcp_mapping import mapping_mcp_stdout_tools, mapping_mcp_http_tools
 from src.rag.rag_index import index_process_files
 
-# Configuración del servidor MCP
-server_params = StdioServerParameters(
-    command=sys.executable,
-    args=["src/mcps/mcp_server.py"],
-    env={**os.environ, "PYTHONPATH": os.getcwd()}
-)
 
 EXIT_INSTRUCTIONS = ['salir', 'exit', 'quit']
-JAVA_SSE_URL = "http://localhost:8080/sse"
 
 async def main():
     print("==== Iniciando Agente Experto (Ollama + qwen2.5:32b + MCPs) ====")
